@@ -12,3 +12,5 @@ Future work:
 2. custom options for stocks/bonds/commodities/crypto/forex
 3. graphical UI
 4. implement other trading algorithms (potentially using AI/machine learning)
+5. portfolio analysis - risk, returns calculator based off historical data
+6. backtesting
