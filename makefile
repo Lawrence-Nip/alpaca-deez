@@ -9,7 +9,6 @@ LDFLAGS = -L$(CURL_DIR) -lcurl
 SRC = main.cpp \
 	  curlService.cpp \
 	  alpacaTradingService.cpp \
-	  marketDataService.cpp \
 	  tradingBot.cpp \
 	  thresholdStrategy.cpp
 OBJ_DIR = build

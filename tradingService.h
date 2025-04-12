@@ -8,6 +8,7 @@ class ITradingService
 {
 public:
     virtual void checkAccount() = 0;
+    virtual double getLastPrice(const std::string &symbol) = 0;
     virtual void placeOrder(const std::string &symbol, int qty, const std::string &side) = 0;
     virtual ~ITradingService() = default;
 };
