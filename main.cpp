@@ -26,7 +26,8 @@ int main()
 
     TradingBot bot(tradingService, strategy);
 
-    bot.run("TSLA");
+    // bot.run("TSLA");
+    bot.runWithMarketData("TSLA");
 
     return 0;
 }

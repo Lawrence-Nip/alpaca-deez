@@ -6,6 +6,7 @@
 #include <string>
 #include <memory>
 
+
 // Alpaca Trading Service
 class AlpacaTradingService : public ITradingService
 {
@@ -15,6 +16,7 @@ public:
     void checkAccount() override;
     double getLastPrice(const std::string &symbol) override;
     void placeOrder(const std::string &symbol, int qty, const std::string &side) override;
+    nlohmann::json fetchMarketData(const std::string& symbol);
 
 private:
     std::shared_ptr<IHttpService> http;

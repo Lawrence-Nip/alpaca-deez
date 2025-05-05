@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <string>
+#include <nlohmann/json.hpp>
 #include "tradingService.h"
 #include "tradingStrategy.h"
 
@@ -13,6 +14,7 @@ public:
                std::shared_ptr<ITradingStrategy> strategy);
 
     void run(const std::string &symbol);
+    void runWithMarketData(const std::string& symbol);
 
 private:
     std::shared_ptr<ITradingService> tradingService;

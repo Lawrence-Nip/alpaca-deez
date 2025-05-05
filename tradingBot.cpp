@@ -1,4 +1,6 @@
 #include "tradingBot.h"
+#include "alpacaTradingService.h"
+#include "thresholdStrategy.h"
 #include <iostream>
 
 TradingBot::TradingBot(std::shared_ptr<ITradingService> tradingService,
@@ -8,7 +10,7 @@ TradingBot::TradingBot(std::shared_ptr<ITradingService> tradingService,
 
 void TradingBot::run(const std::string &symbol)
 {
-    tradingService->checkAccount();
+    // tradingService->checkAccount();
     double price = tradingService->getLastPrice(symbol);
     if (price <= 0.0)
     {
@@ -28,4 +30,19 @@ void TradingBot::run(const std::string &symbol)
     {
         std::cout << "No action needed for " << symbol << std::endl;
     }
+}
+
+void TradingBot::runWithMarketData(const std::string &symbol)
+{
+    auto marketData = tradingService->fetchMarketData(symbol);
+
+    // Process market data (example: print the data)
+    // for (const auto& bar : marketData["bars"]) {
+    //     std::cout << "Time: " << bar["t"] << ", Open: " << bar["o"]
+    //                 << ", Close: " << bar["c"] << ", High: " << bar["h"]
+    //                     << ", Low: " << bar["l"]<< ", Volume: " << bar["v"] << std::endl;
+    // }
+
+    // Use the strategy to make decisions based on market data
+    strategy->analyse(marketData);
 }

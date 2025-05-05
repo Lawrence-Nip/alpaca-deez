@@ -1,6 +1,5 @@
 #include <iostream>
 #include "alpacaTradingService.h"
-#include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
 // Alpaca Trading Service
@@ -44,4 +43,20 @@ void AlpacaTradingService::placeOrder(const std::string &symbol, int qty, const 
     json j = json::parse(response);
     std::cout << "Order Response:\n"
               << j.dump(4) << std::endl;
+}
+
+nlohmann::json AlpacaTradingService::fetchMarketData(const std::string &symbol)
+{
+    std::string endpoint = "/v2/stocks/bars/latest?symbols=" + symbol;
+    std::string response = http->getMarketData(endpoint);
+    try
+    {
+        json j = json::parse(response);
+        return j;
+    }
+    catch (...)
+    {
+        std::cerr << "Failed to get price for " << symbol << std::endl;
+        return nullptr;
+    }
 }
